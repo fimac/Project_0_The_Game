@@ -8,13 +8,13 @@
 .gameboard {
   width: 605px;
   height: 605px;
-  border: 2px solid blue;
+  border: 2px solid red;
   position: relative;
   display: inline-block;
 }
 
 .square {
-  border: 2px solid white;
+  border: 2px solid red;
   width: 200px;
   height: 200px;
   display: inline-block;
@@ -42,4 +42,13 @@
 .playerTwo {
   float: right;
   display: inline-block;
+}
+
+button.start {
+  border: none;
+  padding: 20px;
+  border-radius: 5px;
+  background: #1F1F65;
+  color: white;
+  font-size: 16px;
 }
