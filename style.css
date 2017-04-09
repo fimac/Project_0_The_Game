@@ -2,7 +2,8 @@
   box-sizing: border-box;
 }
 .container {
-  background: lightslategrey;
+  background-image: url("images/white_house.jpg");
+  background-size: cover;
 }
 .gameboard {
   width: 605px;
