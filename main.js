@@ -41,8 +41,9 @@ console.log("js is working");
 //I need a large square to represent the game board
 // Then 9 squares that will sit inside
 // Heading
+// holding theme, until start button is pushed
 // Start button
-// Tokens
+// Tokens/players
 //When matched, a win theme (music, background change)
   // Name of player + WINS! (a button to replay)
 
@@ -65,32 +66,42 @@ console.log("js is working");
 
 //Animate the start button, with a hover type animation
 
-
-
-
-//TESTING flipping one square to show an image
-$squareOne = $(".square.one");
-$squareOne.on("click", function (){
-  $squareOne.css({
-    backgroundImage : "url(images/clintonTwo.jpg)",
-    backgroundSize : "100%"
-  });
-});
-$squareTwo = $(".square.two");
-$squareTwo.on("click", function (){
-  $squareTwo.css({
-    backgroundImage : "url(images/trump.jpg)",
-    backgroundSize : "100%"
-  });
-});
-
-//How can I make this dynamic, so that it can be any square, and it will show either clinton or trump
+//click on any square to show an image not hard coded, set a variable
+//to make a condition that will log the image as either trump or clinton
   //If player one has click event on square, then show clinton jpg
     //If player two has click event on square, then show trump jpg
+
+//Below function will switch between player 1 & 2
+// Once player 1 finished variable changes to 2, once player 2 finishes, variable goes back to 1
+var player;
+$square = $(".square");
+$square.on("click", function (){
+  if (player === 1) {
+      $(this).css({
+      backgroundImage : "url(images/clintonTwo.jpg)",
+      backgroundSize : "100%"
+    });
+    player = 2;
+  } else {
+      $(this).css({
+      backgroundImage : "url(images/trump.jpg)",
+      backgroundSize : "100%"
+    });
+    player = 1;
+  }
+});
+
 
 //Then a function would need to be run to check if the condition of a match to be true
   //If it is return win theme
     // If not continue play
+// When the square is clicked, an additional marker needs to be added so that
+// the game can keep track of player 1 tiles vs player 2 tiles
+
+//what value will determi
+
+
+
 
 
 
