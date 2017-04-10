@@ -174,31 +174,31 @@ var animateBoard = function () {
   });
   $(".square.one").animate({
     right: "-1500px"
-  }, 1500);
+  }, 3500);
   $(".square.two").animate({
     top: "-1500px"
-  }, 1500);
+  }, 3500);
   $(".square.three").animate({
     left: "-1500px"
-  }, 1500);
+  }, 3500);
   $(".square.four").animate({
     right: "-1500px"
-  }, 1500);
+  }, 3500);
   $(".square.five").animate({
     top: "-1500px"
-  }, 1500);
+  }, 3500);
   $(".square.six").animate({
     left: "-1500px"
-  }, 1500);
+  }, 3500);
   $(".square.seven").animate({
     right: "-1500px"
-  }, 1500);
+  }, 3500);
   $(".square.eight").animate({
     bottom: "-1500px"
-  }, 1500);
+  }, 3500);
   $(".square.nine").animate({
     left: "-1500px"
-  }, 1500);
+  }, 3500);
 };
 
 boardCentre = ((window.innerWidth / 2) - 302 ) + "px";
@@ -208,42 +208,34 @@ $gameboard.css({
 });
 
 // Clinton winning theme
-// Update container background
-// Make selected squares flash
-// Clinton wins in big words across screen
-  // add button to this to play again
 
 
 var clintonWin = function () {
   animateBoard();
-var $clintonTheme = $(".clintonTheme");
-$clintonTheme.css({
-  display: "inline-block",
-  left: boardCentre
+    var $clintonTheme = $(".clintonTheme");
+  $clintonTheme.css({
+    display: "inline-block",
+    left: boardCentre
   });
 };
 // Cheeto winning theme
-  //Update container background
-  //Make selected squares flash
-  //Cheeto wins in big letters
-  //add button to this to play again
 
 var cheetoWin = function () {
   animateBoard();
-var $cheetoTheme = $(".cheetoTheme");
-$cheetoTheme.css({
-  display: "inline-block",
-  left: boardCentre
+    var $cheetoTheme = $(".cheetoTheme");
+  $cheetoTheme.css({
+    display: "inline-block",
+    left: boardCentre
   });
 };
 
 //It's a tie theme
 var tie = function () {
   animateBoard();
-var $tieTheme = $(".tieTheme");
-$tieTheme.css({
-  display: "inline-block",
-  left: boardCentre
+    var $tieTheme = $(".tieTheme");
+  $tieTheme.css({
+    display: "inline-block",
+    left: boardCentre
   });
 };
 

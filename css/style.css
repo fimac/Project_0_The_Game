@@ -7,11 +7,34 @@
 }*/
 header {
   background: #000080;
+  height: 150px;
+  position: relative;
 }
 
 header h1, p {
   color: white;
   text-align: center;
+  font-family: 'Press Start 2P', cursive;
+}
+
+header h1 {
+  padding: 10px;
+}
+
+.flag {
+  width: 150px;
+  transform: rotate(180deg);
+}
+
+.flagLeft {
+  display: inline-block;
+  position: absolute;
+}
+
+.flagRight {
+  display: inline-block;
+  position: absolute;
+  right: 0px;
 }
 
 .gameboard {
@@ -32,32 +55,8 @@ header h1, p {
   background-image: url("../images/square_stars.png");
 }
 
-.playerBoard {
-  width: 410px;
-  float: right;
-  position: relative;
-  display: inline-block;
-  right: 100px;
-  border: 2px solid red;
-}
-
-.playerBoard img {
-  width: 200px;
-}
-
-.playerOne  {
-  display: inline-block;
-}
-
-.playerTwo {
-  float: right;
-  display: inline-block;
-}
-
-
 .cheetoTheme {
   display: none;
-  z-index: 1;
   font-size: 50px;
   color: red;
   position: absolute;
@@ -66,7 +65,6 @@ header h1, p {
 
 .clintonTheme {
   display: none;
-  z-index: 1;
   font-size: 50px;
   color: red;
   position: absolute;
@@ -75,7 +73,6 @@ header h1, p {
 
 .tieTheme {
   display: none;
-  z-index: 1;
   font-size: 50px;
   color: red;
   position: absolute;
