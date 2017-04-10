@@ -82,28 +82,38 @@ $square.one("click", function (){ //I only want the square clickable once.
       backgroundImage : "url(images/clintonTwo.jpg)",
       backgroundSize : "100%"
     });
-    $(this).addClass("playerOne"); //add the class player one. Testing this as a marker to check who has square
     player = 2; //update variable to 2, so to switch to player 2
   } else {
       $(this).css({ //when clicked set square css to trump
       backgroundImage : "url(images/trump.jpg)",
       backgroundSize : "100%"
     });
-    $(this).addClass("playerTwo"); //add the class playerTwo. Testing this as marker to use to verify ones
     player = 1;
   }
 });
 
 //Can i add another click function, this will be for checking for wins.
-  //above is function to update square values
+  //above is function to update square images
+    //I need a function that will add a marker class of playerOne / two
+      // Then check if the value for that square is true 
+
+
 
 //FUNCTION TO CHECK FOR WINS
-var $classOne = $(this).hasClass("playerOne");
-var $classTwo = $(this).hasClass("playerTwo");
+$square.one("click", function ( ) {
+    if (player === 1) {
+      $(this).addClass("playerOne");
+      var $classOne = $(this).hasClass("playerOne");
+      console.log($classOne);
+    } else {
+      $(this).addClass("playerTwo");
+      var $classTwo = $(this).hasClass("playerTwo");
+      console.log($classTwo);
+    }
+});
 
-var checkWin = function () {
-  if ()
-};
+
+
 
 
 
