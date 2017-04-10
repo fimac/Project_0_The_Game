@@ -20,14 +20,22 @@ $(document).ready(function () {
   //How do I know if 3 of the same token are matched in the same line?
     // Total of 8 configs, 3 horizontal, 3 vertical, 2 diagonal
     // Vertical Combo wins
-    // 1, 7 & 4 || 1, 2 & 3 || 1, 5 & 9
+    // 1, 7 & 4 || ||
     // 2, 5 & 8
-    // 3, 6 & 9 || 3, 5 & 7
-    //Horizontal Combo wins
+    // 3, 6 & 9 ||
 
+    //Horizontal Combo wins
+    //1, 2 & 3
     // 4, 5 & 6
     // 7, 8 & 9
     //Diagonal wins
+    //1, 5 & 9, 3, 5 & 7
+
+  //How do I know if it's a draw, if all squares are full and none of the
+  //win combos have activated
+  //combo draw test
+    // 3, 2, 4, 7, 9
+    // 1, 5, 6, 8
 
     //There would need to be a condition that would check each time if any of these matched
     //If it does, then win theme
@@ -74,7 +82,9 @@ $(document).ready(function () {
 //Below function will switch between player 1 & 2
 //Declare undefined variable
 // Once player 1 finishes variable changes to 2, once player 2 finishes, variable goes back to 1
+//variable to keep track of number of turns so that if it reaches 9 and none of the winning combos have happened, then it should be a tie.
 var player = 1;
+var numberOfTurns = 0;
 
 $square = $(".square");
 $square.one("click", function (){ //I only want the square clickable once.
@@ -87,7 +97,9 @@ $square.one("click", function (){ //I only want the square clickable once.
     });
 
       $(this).addClass("playerOne"); //add a class marker, so I can check what squares playerOne has
+      numberOfTurns += 1; //add 1 to the number of turns
       player = 2; //update variable to 2, so to switch to player 2
+      console.log("it's player " + player + "'s turn");
 
   } else {
       $(this).addClass("animated flipInX");
@@ -97,7 +109,9 @@ $square.one("click", function (){ //I only want the square clickable once.
     });
 
       $(this).addClass("playerTwo"); //add a class marker, so I can check what squares playerTwo has
+      numberOfTurns += 1; //add 1 to the number of turns
       player = 1;
+      console.log("it's player " + player + "'s turn");
   }
 
   if ( //horizontal
@@ -116,7 +130,9 @@ $square.one("click", function (){ //I only want the square clickable once.
       $(".square.three").hasClass("playerOne") && $(".square.five").hasClass("playerOne") && $(".square.seven").hasClass("playerOne") ||
 
       $(".square.one").hasClass("playerOne") && $(".square.five").hasClass("playerOne") && $(".square.nine").hasClass("playerOne")) {
-    clintonWin();
+
+    clintonWin(); //run clinton win theme
+
   } else if (
       //horizontal
     $(".square.one").hasClass("playerTwo") && $(".square.two").hasClass("playerTwo") &&                             $(".square.three").hasClass("playerTwo") ||
@@ -135,7 +151,11 @@ $square.one("click", function (){ //I only want the square clickable once.
 
     $(".square.one").hasClass("playerTwo") && $(".square.five").hasClass("playerTwo") && $(".square.nine").hasClass("playerTwo")) {
 
-    cheetoWin();
+    cheetoWin(); //run cheeto win theme
+
+  } else if (numberOfTurns === 9){
+    tie(); //run tie theme
+
   } else {
     console.log("no winner");
   }
@@ -166,9 +186,16 @@ var cheetoWin = function () {
 var $cheetoTheme = $(".cheetoTheme");
 $cheetoTheme.css({
   display: "inline-block",
-});
+  });
 };
 
+//It's a tie theme
+var tie = function () {
+var $tieTheme = $(".tieTheme");
+$tieTheme.css({
+  display: "inline-block",
+  });
+};
 
 
 // FUNCTIONS TO HIGHLIGHT WHICH PLAYER IS NEXT
