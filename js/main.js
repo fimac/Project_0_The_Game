@@ -166,24 +166,40 @@ $square.one("click", function (){ //I only want the square clickable once.
 
 // I want to animate the gameboard exploding and each square
 // to fly out to the sides and up on a win
-// Start - animate one square
 
-var animateOne = function () {
+
+var animateBoard = function () {
+  $(".gameboard").css ({
+    border: "none"
+  });
   $(".square.one").animate({
-    right: "-900px"
-  }, 1000);
+    right: "-1500px"
+  }, 1500);
+  $(".square.two").animate({
+    top: "-1500px"
+  }, 1500);
+  $(".square.three").animate({
+    left: "-1500px"
+  }, 1500);
+  $(".square.four").animate({
+    right: "-1500px"
+  }, 1500);
+  $(".square.five").animate({
+    top: "-1500px"
+  }, 1500);
+  $(".square.six").animate({
+    left: "-1500px"
+  }, 1500);
+  $(".square.seven").animate({
+    right: "-1500px"
+  }, 1500);
+  $(".square.eight").animate({
+    bottom: "-1500px"
+  }, 1500);
+  $(".square.nine").animate({
+    left: "-1500px"
+  }, 1500);
 };
-
-
-
-
-
-
-
-
-
-
-
 
 boardCentre = ((window.innerWidth / 2) - 302 ) + "px";
 $gameboard = $(".gameboard");
@@ -199,7 +215,7 @@ $gameboard.css({
 
 
 var clintonWin = function () {
-  animateOne();
+  animateBoard();
 var $clintonTheme = $(".clintonTheme");
 $clintonTheme.css({
   display: "inline-block",
@@ -213,6 +229,7 @@ $clintonTheme.css({
   //add button to this to play again
 
 var cheetoWin = function () {
+  animateBoard();
 var $cheetoTheme = $(".cheetoTheme");
 $cheetoTheme.css({
   display: "inline-block",
@@ -222,6 +239,7 @@ $cheetoTheme.css({
 
 //It's a tie theme
 var tie = function () {
+  animateBoard();
 var $tieTheme = $(".tieTheme");
 $tieTheme.css({
   display: "inline-block",
