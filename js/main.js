@@ -162,15 +162,34 @@ $square.one("click", function (){ //I only want the square clickable once.
 });
 
 ///////////THEMES AND ANIMATIONS/////////////////////
+//Test animations//
+
+// I want to animate the gameboard exploding and each square
+// to fly out to the sides and up on a win
+// Start - animate one square
+
+var animateOne = function () {
+  $(".square.one").animate({
+    right: "-900px"
+  }, 1000);
+};
+
+
+
+
+
+
+
+
+
+
+
+
 boardCentre = ((window.innerWidth / 2) - 302 ) + "px";
 $gameboard = $(".gameboard");
 $gameboard.css({
   left: boardCentre
 });
-
-
-
-
 
 // Clinton winning theme
 // Update container background
@@ -180,6 +199,7 @@ $gameboard.css({
 
 
 var clintonWin = function () {
+  animateOne();
 var $clintonTheme = $(".clintonTheme");
 $clintonTheme.css({
   display: "inline-block",
