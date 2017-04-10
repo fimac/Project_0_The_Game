@@ -1,10 +1,11 @@
 * {
   box-sizing: border-box;
 }
-/*.container {
-  background-image: url("images/white_house.jpg");
-  background-size: cover;
-}*/
+
+body {
+  background: red;
+}
+
 header {
   background: #000080;
   height: 150px;
@@ -38,20 +39,38 @@ header h1 {
 }
 
 .col-one {
-  border: 2px solid blue;
+  border: 2px solid red;
   display: inline-block;
   width: 300px;
   height: 604px;
   position: absolute;
+  font-family: 'Press Start 2P', cursive;
+  color: white;
+  text-align: center;
+  background: #000080;
+}
+
+.col-one img {
+  width: 200px;
+  border-radius: 100%;
 }
 
 .col-two {
-  border: 2px solid blue;
+  border: 2px solid red;
   display: inline-block;
   width: 300px;
   height: 604px;
   position: absolute;
   right: 7px;
+  font-family: 'Press Start 2P', cursive;
+  color: white;
+  text-align: center;
+  background: #000080;
+}
+
+.col-two img {
+  width: 200px;
+  border-radius: 100%;
 }
 
 .gameboard {

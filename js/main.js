@@ -99,7 +99,6 @@ $square.one("click", function (){ //I only want the square clickable once.
       $(this).addClass("playerOne"); //add a class marker, so I can check what squares playerOne has
       numberOfTurns += 1; //add 1 to the number of turns
       player = 2; //update variable to 2, so to switch to player 2
-      console.log("it's player " + player + "'s turn");
 
   } else {
       $(this).addClass("animated flipInX");
@@ -111,7 +110,6 @@ $square.one("click", function (){ //I only want the square clickable once.
       $(this).addClass("playerTwo"); //add a class marker, so I can check what squares playerTwo has
       numberOfTurns += 1; //add 1 to the number of turns
       player = 1;
-      console.log("it's player " + player + "'s turn");
   }
 
   if ( //horizontal
@@ -157,7 +155,7 @@ $square.one("click", function (){ //I only want the square clickable once.
     tie(); //run tie theme
 
   } else {
-    console.log("no winner");
+    console.log("it's player " + player + "'s turn");
   }
 });
 
