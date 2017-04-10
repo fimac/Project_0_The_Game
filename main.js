@@ -1,5 +1,5 @@
 $(document).ready(function () {
-console.log("js is working");
+// console.log("js is working");
 
 // Technical Requirements
 //
@@ -74,7 +74,8 @@ console.log("js is working");
 //Below function will switch between player 1 & 2
 //Declare undefined variable
 // Once player 1 finishes variable changes to 2, once player 2 finishes, variable goes back to 1
-var player;
+var player = 1;
+
 $square = $(".square");
 $square.one("click", function (){ //I only want the square clickable once.
   if (player === 1) {
@@ -82,35 +83,67 @@ $square.one("click", function (){ //I only want the square clickable once.
       backgroundImage : "url(images/clintonTwo.jpg)",
       backgroundSize : "100%"
     });
+    $(this).addClass("playerOne"); //add a class marker, so I can check what squares playerOne has
+    var $classOne = $(this).hasClass("playerOne");
     player = 2; //update variable to 2, so to switch to player 2
   } else {
       $(this).css({ //when clicked set square css to trump
       backgroundImage : "url(images/trump.jpg)",
       backgroundSize : "100%"
     });
+    $(this).addClass("playerTwo"); //add a class marker, so I can check what squares playerTwo has
+    var $classTwo = $(this).hasClass("playerTwo");
     player = 1;
   }
+  if ( //horizontal
+      $(".square.one").hasClass("playerOne") && $(".square.two").hasClass("playerOne") &&                             $(".square.three").hasClass("playerOne") ||
+
+      $(".square.four").hasClass("playerOne") && $(".square.five").hasClass("playerOne") && $(".square.six").hasClass("playerOne") ||
+
+      $(".square.seven").hasClass("playerOne") && $(".square.eight").hasClass("playerOne") && $(".square.nine").hasClass("playerOne") ||
+//vertical
+      $(".square.one").hasClass("playerOne") && $(".square.four").hasClass("playerOne") && $(".square.seven").hasClass("playerOne") ||
+
+      $(".square.two").hasClass("playerOne") && $(".square.five").hasClass("playerOne") && $(".square.eight").hasClass("playerOne") ||
+
+      $(".square.three").hasClass("playerOne") && $(".square.six").hasClass("playerOne") && $(".square.nine").hasClass("playerOne") ||
+//diagonal
+      $(".square.three").hasClass("playerOne") && $(".square.five").hasClass("playerOne") && $(".square.seven").hasClass("playerOne") ||
+
+      $(".square.one").hasClass("playerOne") && $(".square.five").hasClass("playerOne") && $(".square.nine").hasClass("playerOne")) {
+    console.log("winner");
+  } else {
+    console.log("no winner");
+  }
+
 });
 
 //Can i add another click function, this will be for checking for wins.
   //above is function to update square images
     //I need a function that will add a marker class of playerOne / two
-      // Then check if the value for that square is true 
+      // Then check if the value for that square is true
+
+      // for ( var i = 0; i < $("playerOne").length; i ++) {
+      //   console.log(i);
+      // }
 
 
 
-//FUNCTION TO CHECK FOR WINS
-$square.one("click", function ( ) {
-    if (player === 1) {
-      $(this).addClass("playerOne");
-      var $classOne = $(this).hasClass("playerOne");
-      console.log($classOne);
-    } else {
-      $(this).addClass("playerTwo");
-      var $classTwo = $(this).hasClass("playerTwo");
-      console.log($classTwo);
-    }
-});
+//FUNCTION TO ADD CLASS MARKER AND CHECK IF TRUE
+// $square.one("click", function ( ) {
+//     if (player === 1) {
+//       // $(this).addClass("playerOne");
+//       var $classOne = $(this).hasClass("playerOne");
+//       console.log($classOne);
+//     } else {
+//       // $(this).addClass("playerTwo");
+//       var $classTwo = $(this).hasClass("playerTwo");
+//       console.log($classTwo);
+//     }
+// // });
+
+
+
 
 
 
