@@ -20,16 +20,15 @@ $(document).ready(function () {
   //How do I know if 3 of the same token are matched in the same line?
     // Total of 8 configs, 3 horizontal, 3 vertical, 2 diagonal
     // Vertical Combo wins
-    // 1, 7 & 4
+    // 1, 7 & 4 || 1, 2 & 3 || 1, 5 & 9
     // 2, 5 & 8
-    // 3, 6 & 9
+    // 3, 6 & 9 || 3, 5 & 7
     //Horizontal Combo wins
-    // 1, 2 & 3
+
     // 4, 5 & 6
     // 7, 8 & 9
     //Diagonal wins
-    //3, 5 & 7
-    //1, 5 & 9
+
     //There would need to be a condition that would check each time if any of these matched
     //If it does, then win theme
 // If a token flipped on a square, it can only happen once, it can't be flipped again (i could use that click once jquery thing)
@@ -71,6 +70,7 @@ $(document).ready(function () {
   //If player one has click event on square, then show clinton jpg
     //If player two has click event on square, then show trump jpg
 
+
 //Below function will switch between player 1 & 2
 //Declare undefined variable
 // Once player 1 finishes variable changes to 2, once player 2 finishes, variable goes back to 1
@@ -79,106 +79,127 @@ var player = 1;
 $square = $(".square");
 $square.one("click", function (){ //I only want the square clickable once.
   if (player === 1) {
+
+      $(this).addClass("animated flipInX");
       $(this).css({ //When clicked set square css to image clinton
       backgroundImage : "url(images/clintonTwo.jpg)",
       backgroundSize : "100%"
     });
-    $(this).addClass("playerOne"); //add a class marker, so I can check what squares playerOne has
-    var $classOne = $(this).hasClass("playerOne");
-    player = 2; //update variable to 2, so to switch to player 2
+
+      $(this).addClass("playerOne"); //add a class marker, so I can check what squares playerOne has
+      player = 2; //update variable to 2, so to switch to player 2
+
   } else {
-      $(this).css({ //when clicked set square css to trump
+
+      $(this).css({ //when clicked set square css to trump cheeto
       backgroundImage : "url(images/trump.jpg)",
       backgroundSize : "100%"
     });
-    $(this).addClass("playerTwo"); //add a class marker, so I can check what squares playerTwo has
-    var $classTwo = $(this).hasClass("playerTwo");
-    player = 1;
+      $(this).addClass("animated flipInX");
+      $(this).addClass("playerTwo"); //add a class marker, so I can check what squares playerTwo has
+      player = 1;
   }
+
   if ( //horizontal
-      $(".square.one").hasClass("playerOne") && $(".square.two").hasClass("playerOne") &&                             $(".square.three").hasClass("playerOne") ||
+      ($(".square.one").hasClass("playerOne") && $(".square.two").hasClass("playerOne") &&                             $(".square.three").hasClass("playerOne")) ||
 
       $(".square.four").hasClass("playerOne") && $(".square.five").hasClass("playerOne") && $(".square.six").hasClass("playerOne") ||
 
       $(".square.seven").hasClass("playerOne") && $(".square.eight").hasClass("playerOne") && $(".square.nine").hasClass("playerOne") ||
-//vertical
+        //vertical
       $(".square.one").hasClass("playerOne") && $(".square.four").hasClass("playerOne") && $(".square.seven").hasClass("playerOne") ||
 
       $(".square.two").hasClass("playerOne") && $(".square.five").hasClass("playerOne") && $(".square.eight").hasClass("playerOne") ||
 
       $(".square.three").hasClass("playerOne") && $(".square.six").hasClass("playerOne") && $(".square.nine").hasClass("playerOne") ||
-//diagonal
+        //diagonal
       $(".square.three").hasClass("playerOne") && $(".square.five").hasClass("playerOne") && $(".square.seven").hasClass("playerOne") ||
 
       $(".square.one").hasClass("playerOne") && $(".square.five").hasClass("playerOne") && $(".square.nine").hasClass("playerOne")) {
-    console.log("winner");
+    clintonWin();
+  } else if (
+      //horizontal
+    $(".square.one").hasClass("playerTwo") && $(".square.two").hasClass("playerTwo") &&                             $(".square.three").hasClass("playerTwo") ||
+
+    $(".square.four").hasClass("playerTwo") && $(".square.five").hasClass("playerTwo") && $(".square.six").hasClass("playerTwo") ||
+
+    $(".square.seven").hasClass("playerTwo") && $(".square.eight").hasClass("playerTwo") && $(".square.nine").hasClass("playerTwo") ||
+    //vertical
+    $(".square.one").hasClass("playerTwo") && $(".square.four").hasClass("playerTwo") && $(".square.seven").hasClass("playerTwo") ||
+
+    $(".square.two").hasClass("playerTwo") && $(".square.five").hasClass("playerTwo") && $(".square.eight").hasClass("playerTwo") ||
+
+    $(".square.three").hasClass("playerTwo") && $(".square.six").hasClass("playerTwo") && $(".square.nine").hasClass("playerTwo") ||
+    //diagonal
+    $(".square.three").hasClass("playerTwo") && $(".square.five").hasClass("playerTwo") && $(".square.seven").hasClass("playerTwo") ||
+
+    $(".square.one").hasClass("playerTwo") && $(".square.five").hasClass("playerTwo") && $(".square.nine").hasClass("playerTwo")) {
+
+    cheetoWin();
   } else {
     console.log("no winner");
   }
-
 });
 
-//Can i add another click function, this will be for checking for wins.
-  //above is function to update square images
-    //I need a function that will add a marker class of playerOne / two
-      // Then check if the value for that square is true
-
-      // for ( var i = 0; i < $("playerOne").length; i ++) {
-      //   console.log(i);
-      // }
+///////////THEMES/////////////////////
+// Clinton winning theme
+// Update container background
+// Make selected squares flash
+// Clinton wins in big words across screen
+  // add button to this to play again
 
 
+var clintonWin = function () {
+var $background = $(".container");
+$background.css( {
+  backgroundImage: "url(##)",
+  });
+var $clintonTheme = $(".clintonTheme");
+$clintonTheme.css({
+  display: "inline-block",
+  top: "300px",
+  left: "0px"
+});
+var $clintonHeading = $(".clintonTheme h1");
+$clintonHeading.css({
+  color: "red"
+  });
+};
+// Cheeto winning theme
+  //Update container background
+  //Make selected squares flash
+  //Cheeto wins in big letters
+  //add button to this to play again
 
-//FUNCTION TO ADD CLASS MARKER AND CHECK IF TRUE
-// $square.one("click", function ( ) {
-//     if (player === 1) {
-//       // $(this).addClass("playerOne");
-//       var $classOne = $(this).hasClass("playerOne");
-//       console.log($classOne);
-//     } else {
-//       // $(this).addClass("playerTwo");
-//       var $classTwo = $(this).hasClass("playerTwo");
-//       console.log($classTwo);
-//     }
-// // });
-
-
-
-
-
-
-
-
-
-//Then a function would need to be run to check if the condition of a match to be true
-  //If it is return win theme
-    // If not continue play
-// When the square is clicked, an additional marker needs to be added so that
-// the game can keep track of player 1 tiles vs player 2 tiles
-
-//what value will determine a win, how does it know if 3 are in a row
-  //How do I capture the value of the square
-    //If that equals the next 2 horizontally or vertically or diagonally log winner
-
-  // $square.each( function (index, domNode) {
-  //   console.log(this === domNode);
-  //   console.log($(this).getClass);
-  // });
-
-
-    // //you've got a whole bunch of paragraphs, i want to loop through them and update
-    // // i is the same as index.
-    // // domNode can be called anything, jQuery will assume that is the current node you want
-    // //
-    // $allLorems.each( function ( index, domNode ) {
-    //   console.log( this === domNode ); //this is true
-    //   $(this).css( "opacity", Math.random() );
-    //   $(this).html( "Paragraph: " + index );
+var cheetoWin = function () {
+$background = $(".container");
+$background.css( {
+  backgroundImage: "url(images/trump-win-background.jpg)",
+  });
+var $cheetoTheme = $(".cheetoTheme");
+$cheetoTheme.css({
+  display: "inline-block",
+  top: "300px",
+  left: "0px"
+});
+};
 
 
 
-
-
+// FUNCTIONS TO HIGHLIGHT WHICH PLAYER IS NEXT
+// var $playerOne = $(".clinton");
+// var $playerTwo = $(".trump");
+// var playerOneTurn = function () {
+//   $playerOne.css({
+//     border: "1px solid yellow"
+//   });
+// };
+//
+// var playerTwoTurn = function () {
+//   $playerTwo.css({
+//     border: "1px solid yellow"
+//   });
+// };
 
 
 
@@ -187,36 +208,5 @@ $square.one("click", function (){ //I only want the square clickable once.
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+///////////below to end $(document).ready thing from 1st line
 });

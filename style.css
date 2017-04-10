@@ -27,8 +27,7 @@
   width: 410px;
   float: right;
   position: relative;
-  right: 300px;
-  border: 2px solid blue;
+  border: 2px solid red;
 }
 
 .playerBoard img {
@@ -44,11 +43,17 @@
   display: inline-block;
 }
 
-button.start {
-  border: none;
-  padding: 20px;
-  border-radius: 5px;
-  background: #1F1F65;
-  color: white;
-  font-size: 16px;
+
+.cheetoTheme {
+  display: none;
+  z-index: 1;
+  font-size: 50px;
+  position: absolute;
+}
+
+.clintonTheme {
+  display: none;
+  z-index: 1;
+  font-size: 50px;
+  position: absolute;
 }
