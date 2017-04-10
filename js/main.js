@@ -161,7 +161,17 @@ $square.one("click", function (){ //I only want the square clickable once.
   }
 });
 
-///////////THEMES/////////////////////
+///////////THEMES AND ANIMATIONS/////////////////////
+boardCentre = ((window.innerWidth / 2) - 302 ) + "px";
+$gameboard = $(".gameboard");
+$gameboard.css({
+  left: boardCentre
+});
+
+
+
+
+
 // Clinton winning theme
 // Update container background
 // Make selected squares flash
@@ -172,8 +182,8 @@ $square.one("click", function (){ //I only want the square clickable once.
 var clintonWin = function () {
 var $clintonTheme = $(".clintonTheme");
 $clintonTheme.css({
-  display: "inline-block"
-
+  display: "inline-block",
+  left: boardCentre
   });
 };
 // Cheeto winning theme
@@ -186,6 +196,7 @@ var cheetoWin = function () {
 var $cheetoTheme = $(".cheetoTheme");
 $cheetoTheme.css({
   display: "inline-block",
+  left: boardCentre
   });
 };
 
@@ -194,24 +205,10 @@ var tie = function () {
 var $tieTheme = $(".tieTheme");
 $tieTheme.css({
   display: "inline-block",
+  left: boardCentre
   });
 };
 
-
-// FUNCTIONS TO HIGHLIGHT WHICH PLAYER IS NEXT
-// var $playerOne = $(".clinton");
-// var $playerTwo = $(".trump");
-// var playerOneTurn = function () {
-//   $playerOne.css({
-//     border: "1px solid yellow"
-//   });
-// };
-//
-// var playerTwoTurn = function () {
-//   $playerTwo.css({
-//     border: "1px solid yellow"
-//   });
-// };
 
 
 
