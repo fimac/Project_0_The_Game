@@ -72,24 +72,39 @@ console.log("js is working");
     //If player two has click event on square, then show trump jpg
 
 //Below function will switch between player 1 & 2
-// Once player 1 finished variable changes to 2, once player 2 finishes, variable goes back to 1
+//Declare undefined variable
+// Once player 1 finishes variable changes to 2, once player 2 finishes, variable goes back to 1
 var player;
 $square = $(".square");
-$square.on("click", function (){
+$square.one("click", function (){ //I only want the square clickable once.
   if (player === 1) {
-      $(this).css({
+      $(this).css({ //When clicked set square css to image clinton
       backgroundImage : "url(images/clintonTwo.jpg)",
       backgroundSize : "100%"
     });
-    player = 2;
+    $(this).addClass("playerOne"); //add the class player one. Testing this as a marker to check who has square
+    player = 2; //update variable to 2, so to switch to player 2
   } else {
-      $(this).css({
+      $(this).css({ //when clicked set square css to trump
       backgroundImage : "url(images/trump.jpg)",
       backgroundSize : "100%"
     });
+    $(this).addClass("playerTwo"); //add the class playerTwo. Testing this as marker to use to verify ones
     player = 1;
   }
 });
+
+//Can i add another click function, this will be for checking for wins.
+  //above is function to update square values
+
+//FUNCTION TO CHECK FOR WINS
+var $classOne = $(this).hasClass("playerOne");
+var $classTwo = $(this).hasClass("playerTwo");
+
+var checkWin = function () {
+  if ()
+};
+
 
 
 //Then a function would need to be run to check if the condition of a match to be true
@@ -98,8 +113,24 @@ $square.on("click", function (){
 // When the square is clicked, an additional marker needs to be added so that
 // the game can keep track of player 1 tiles vs player 2 tiles
 
-//what value will determi
+//what value will determine a win, how does it know if 3 are in a row
+  //How do I capture the value of the square
+    //If that equals the next 2 horizontally or vertically or diagonally log winner
 
+  // $square.each( function (index, domNode) {
+  //   console.log(this === domNode);
+  //   console.log($(this).getClass);
+  // });
+
+
+    // //you've got a whole bunch of paragraphs, i want to loop through them and update
+    // // i is the same as index.
+    // // domNode can be called anything, jQuery will assume that is the current node you want
+    // //
+    // $allLorems.each( function ( index, domNode ) {
+    //   console.log( this === domNode ); //this is true
+    //   $(this).css( "opacity", Math.random() );
+    //   $(this).html( "Paragraph: " + index );
 
 
 
