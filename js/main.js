@@ -90,12 +90,12 @@ $square.one("click", function (){ //I only want the square clickable once.
       player = 2; //update variable to 2, so to switch to player 2
 
   } else {
-
+      $(this).addClass("animated flipInX");
       $(this).css({ //when clicked set square css to trump cheeto
       backgroundImage : "url(images/trump.jpg)",
       backgroundSize : "100%"
     });
-      $(this).addClass("animated flipInX");
+
       $(this).addClass("playerTwo"); //add a class marker, so I can check what squares playerTwo has
       player = 1;
   }
@@ -150,19 +150,10 @@ $square.one("click", function (){ //I only want the square clickable once.
 
 
 var clintonWin = function () {
-var $background = $(".container");
-$background.css( {
-  backgroundImage: "url(##)",
-  });
 var $clintonTheme = $(".clintonTheme");
 $clintonTheme.css({
-  display: "inline-block",
-  top: "300px",
-  left: "0px"
-});
-var $clintonHeading = $(".clintonTheme h1");
-$clintonHeading.css({
-  color: "red"
+  display: "inline-block"
+
   });
 };
 // Cheeto winning theme
@@ -172,15 +163,9 @@ $clintonHeading.css({
   //add button to this to play again
 
 var cheetoWin = function () {
-$background = $(".container");
-$background.css( {
-  backgroundImage: "url(images/trump-win-background.jpg)",
-  });
 var $cheetoTheme = $(".cheetoTheme");
 $cheetoTheme.css({
   display: "inline-block",
-  top: "300px",
-  left: "0px"
 });
 };
 

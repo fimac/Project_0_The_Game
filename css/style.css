@@ -1,16 +1,27 @@
 * {
   box-sizing: border-box;
 }
-.container {
+/*.container {
   background-image: url("images/white_house.jpg");
   background-size: cover;
+}*/
+header {
+  border: 2px solid red;
+  background: #000080;
 }
+
+header h1, p {
+  color: white;
+  text-align: center;
+}
+
 .gameboard {
-  width: 605px;
-  height: 605px;
+  width: 604px;
+  height: 604px;
   border: 2px solid red;
   position: relative;
   display: inline-block;
+  left: 100px;
 }
 
 .square {
@@ -20,13 +31,15 @@
   display: inline-block;
   position: relative;
   float: right;
-  background-image: url("images/square_stars.png");
+  background-image: url("../images/square_stars.png");
 }
 
 .playerBoard {
   width: 410px;
   float: right;
   position: relative;
+  display: inline-block;
+  right: 100px;
   border: 2px solid red;
 }
 
@@ -48,12 +61,18 @@
   display: none;
   z-index: 1;
   font-size: 50px;
+  color: red;
   position: absolute;
+  top: 300px;
+  left: 10px;
 }
 
 .clintonTheme {
   display: none;
   z-index: 1;
   font-size: 50px;
+  color: red;
   position: absolute;
+  top: 300px;
+  left: 10px;
 }
