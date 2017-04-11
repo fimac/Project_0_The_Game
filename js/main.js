@@ -149,7 +149,7 @@ $square.one("click", function (){ //I only want the square clickable once.
 
       $(".square.one").hasClass("playerOne") && $(".square.five").hasClass("playerOne") && $(".square.nine").hasClass("playerOne")) {
     playerOneWins += 1; //add one to the win counter
-    console.log(playerOneWins);
+    $(".scoreOne").text(playerOneWins);
     clintonWin(); //run clinton win theme
 
   } else if (

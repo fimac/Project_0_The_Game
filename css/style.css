@@ -83,7 +83,7 @@ header h1 {
   display: none;
 }
 
-.score {
+.scoreOne, .scoreTwo {
   height: 100px;
   width: 100px;
   background: #000000;
@@ -92,6 +92,9 @@ header h1 {
   display: inline-block;
   margin-top: 50px;
   border-radius: 5%;
+  font-size: 40px;
+  text-align: center;
+  padding-top: 30px;
 }
 
 .gameboard {
