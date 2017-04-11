@@ -99,6 +99,7 @@ $square.one("click", function (){ //I only want the square clickable once.
       $(this).addClass("playerOne"); //add a class marker, so I can check what squares playerOne has
       numberOfTurns += 1; //add 1 to the number of turns
       player = 2; //update variable to 2, so to switch to player 2
+      animatePlayerTwo();
 
   } else {
       $(this).addClass("animated flipInX");
@@ -110,6 +111,7 @@ $square.one("click", function (){ //I only want the square clickable once.
       $(this).addClass("playerTwo"); //add a class marker, so I can check what squares playerTwo has
       numberOfTurns += 1; //add 1 to the number of turns
       player = 1;
+      animatePlayerOne();
   }
 
   if ( //horizontal
@@ -160,7 +162,25 @@ $square.one("click", function (){ //I only want the square clickable once.
 });
 
 ///////////THEMES AND ANIMATIONS/////////////////////
-//Test animations//
+
+//animate player when it's their turn, add text saying player one turn
+
+//animate, h2 + img + p in col-one & col-two, with a delay
+
+//test animate h2
+//window.setTimeout(function () {
+//console.log("This was called after 3000 ms");
+// }, 3000);
+
+var animatePlayerOne = function () {
+  console.log("animated player one");
+};
+
+var animatePlayerTwo = function () {
+  console.log("animated player two");
+};
+
+
 
 // I want to animate the gameboard exploding and each square
 // to fly out to the sides and up on a win
@@ -206,14 +226,14 @@ $gameboard.css({
 });
 
 // Clinton winning theme
-
+themeCentre = ((window.innerWidth / 2) - 300 ) + "px";
 
 var clintonWin = function () {
   animateBoard();
     var $clintonTheme = $(".clintonTheme");
   $clintonTheme.css({
     display: "inline-block",
-    left: boardCentre
+    left: themeCentre
   });
 };
 // Cheeto winning theme
@@ -223,7 +243,7 @@ var cheetoWin = function () {
     var $cheetoTheme = $(".cheetoTheme");
   $cheetoTheme.css({
     display: "inline-block",
-    left: boardCentre
+    left: themeCentre
   });
 };
 
@@ -233,9 +253,11 @@ var tie = function () {
     var $tieTheme = $(".tieTheme");
   $tieTheme.css({
     display: "inline-block",
-    left: boardCentre
+    left: themeCentre
   });
 };
+
+
 
 
 

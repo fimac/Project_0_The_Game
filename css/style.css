@@ -93,24 +93,27 @@ header h1 {
 
 .cheetoTheme {
   display: none;
-  font-size: 50px;
-  color: red;
+  font-size: 25px;
+  color: white;
   position: absolute;
   top: 300px;
+  font-family: 'Press Start 2P', cursive;
 }
 
 .clintonTheme {
   display: none;
-  font-size: 50px;
-  color: red;
+  font-size: 25px;
+  color: white;
   position: absolute;
   top: 300px;
+  font-family: 'Press Start 2P', cursive;
 }
 
 .tieTheme {
   display: none;
-  font-size: 50px;
-  color: red;
+  font-size: 30px;
+  color: white;
   position: absolute;
   top: 300px;
+  font-family: 'Press Start 2P', cursive;
 }
