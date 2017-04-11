@@ -133,36 +133,45 @@ $square.on("click", function (){ //I only want the square clickable once.
   }
 
   if ( //horizontal
-    ($one.hasClass("playerOne") && ($two.hasClass("playerOne") && $three.hasClass("playerOne")) ||
-    ($four.hasClass("playerOne") && $seven.hasClass("playerOne")) ||
-    ($five.hasClass("playerOne") && $nine.hasClass("playerOne"))) ||
+      ($(".square.one").hasClass("playerOne") && $(".square.two").hasClass("playerOne") && $(".square.three").hasClass("playerOne")) ||
 
-    ($five.hasClass("playerOne") && ($six.hasClass("playerOne") && $four.hasClass("playerOne")) ||
-    ($two.hasClass("playerOne") && $eight.hasClass("playerOne")) ||
-    ($seven.hasClass("playerOne") && $three.hasClass("playerOne"))) ||
+      $(".square.four").hasClass("playerOne") && $(".square.five").hasClass("playerOne") && $(".square.six").hasClass("playerOne") ||
 
-    $three.hasClass("playerOne") && $six.hasClass("playerOne") && $nine.hasClass("playerOne") ||
-    $seven.hasClass("playerOne") && $eight.hasClass("playerOne") && $nine.hasClass("playerOne"))
-    {
-      playerOneWins += 1; //add one to the win counter
-      $(".scoreOne").text(playerOneWins); //push the number of wins to the players score panel
-      clintonWin(); //run clinton win theme
+      $(".square.seven").hasClass("playerOne") && $(".square.eight").hasClass("playerOne") && $(".square.nine").hasClass("playerOne") ||
+        //vertical
+      $(".square.one").hasClass("playerOne") && $(".square.four").hasClass("playerOne") && $(".square.seven").hasClass("playerOne") ||
 
-} else if (
-    ($one.hasClass("playerTwo") && ($two.hasClass("playerTwo") && $three.hasClass("playerTwo")) ||
-    ($four.hasClass("playerTwo") && $seven.hasClass("playerTwo")) ||
-    ($five.hasClass("playerTwo") && $nine.hasClass("playerTwo"))) ||
+      $(".square.two").hasClass("playerOne") && $(".square.five").hasClass("playerOne") && $(".square.eight").hasClass("playerOne") ||
 
-    ($five.hasClass("playerTwo") && ($six.hasClass("playerTwo") && $four.hasClass("playerTwo")) ||
-    ($two.hasClass("playerTwo") && $eight.hasClass("playerTwo")) ||
-    ($seven.hasClass("playerTwo") && $three.hasClass("playerTwo"))) ||
+      $(".square.three").hasClass("playerOne") && $(".square.six").hasClass("playerOne") && $(".square.nine").hasClass("playerOne") ||
+        //diagonal
+      $(".square.three").hasClass("playerOne") && $(".square.five").hasClass("playerOne") && $(".square.seven").hasClass("playerOne") ||
 
-    $three.hasClass("playerTwo") && $six.hasClass("playerTwo") && $nine.hasClass("playerTwo") ||
-    $seven.hasClass("playerTwo") && $eight.hasClass("playerTwo") && $nine.hasClass("playerTwo"))
-    {
-     playerTwoWins += 1; //add one to the win counter
-     $(".scoreTwo").text(playerTwoWins); //push the number of ones to the players score panel
-     cheetoWin(); //run cheeto win theme
+      $(".square.one").hasClass("playerOne") && $(".square.five").hasClass("playerOne") && $(".square.nine").hasClass("playerOne")) {
+    playerOneWins += 1; //add one to the win counter
+    $(".scoreOne").text(playerOneWins); //push the number of wins to the players score panel
+    clintonWin(); //run clinton win theme
+
+  } else if (
+      //horizontal
+    $(".square.one").hasClass("playerTwo") && $(".square.two").hasClass("playerTwo") && $(".square.three").hasClass("playerTwo") ||
+
+    $(".square.four").hasClass("playerTwo") && $(".square.five").hasClass("playerTwo") && $(".square.six").hasClass("playerTwo") ||
+
+    $(".square.seven").hasClass("playerTwo") && $(".square.eight").hasClass("playerTwo") && $(".square.nine").hasClass("playerTwo") ||
+    //vertical
+    $(".square.one").hasClass("playerTwo") && $(".square.four").hasClass("playerTwo") && $(".square.seven").hasClass("playerTwo") ||
+
+    $(".square.two").hasClass("playerTwo") && $(".square.five").hasClass("playerTwo") && $(".square.eight").hasClass("playerTwo") ||
+
+    $(".square.three").hasClass("playerTwo") && $(".square.six").hasClass("playerTwo") && $(".square.nine").hasClass("playerTwo") ||
+    //diagonal
+    $(".square.three").hasClass("playerTwo") && $(".square.five").hasClass("playerTwo") && $(".square.seven").hasClass("playerTwo") ||
+
+    $(".square.one").hasClass("playerTwo") && $(".square.five").hasClass("playerTwo") && $(".square.nine").hasClass("playerTwo")) {
+    playerTwoWins += 1; //add one to the win counter
+    $(".scoreTwo").text(playerTwoWins); //push the number of ones to the players score panel
+    cheetoWin(); //run cheeto win theme
 
   } else if (numberOfTurns === 9){
       tie(); //run tie theme
@@ -198,7 +207,7 @@ var animatePlayerTwo = function () {
   }, 500);
 };
 
-//function to remove the text so it toggles back and forth between the two
+//function to remove the prompt to play text so it toggles back and forth between the two
  var removePlayerOneText = function () {
    $(".col-two p").css({
      display: "none"
@@ -301,7 +310,6 @@ var tie = function () {
     left: themeCentre
   });
 };
-
 //reset button for tie theme
 $tieButton.on("click", function (){
   $tieTheme.css({
