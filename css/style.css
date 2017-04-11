@@ -56,7 +56,7 @@ header h1 {
 }
 
 .col-one p {
-  margin-top: 100px;
+  margin-top: 50px;
   display: none;
 }
 
@@ -79,8 +79,19 @@ header h1 {
 }
 
 .col-two p {
-  margin-top: 100px;
+  margin-top: 50px;
   display: none;
+}
+
+.score {
+  height: 100px;
+  width: 100px;
+  background: #000000;
+  color: #E8702A;
+  border: 2px solid #FFFFFF;
+  display: inline-block;
+  margin-top: 50px;
+  border-radius: 5%;
 }
 
 .gameboard {

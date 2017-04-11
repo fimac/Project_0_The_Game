@@ -86,8 +86,22 @@ $(document).ready(function () {
 //Declare undefined variable
 // Once player 1 finishes variable changes to 2, once player 2 finishes, variable goes back to 1
 //variable to keep track of number of turns so that if it reaches 9 and none of the winning combos have happened, then it should be a tie.
+
+//I need a function to keep track of scoring, first to reach 3 wins.
+  //If playerOne or two === 3 wins - then play win theme
+  //When each game completes I need:
+    //1 to be added to the scoreboard of the winner
+
+      //The squares to reset to star background
+      //PlayerOne and PlayerTwo classes to be removed
+      //numberOfTurns to reset to 0
+  // I need a counter on each players column to display their score
+    //I need the number pushed to that scoreboard as a string using .text
+
 var player = 1;
 var numberOfTurns = 0;
+var playerOneWins = 0;
+var playerTwoWins = 0;
 
 $square = $(".square");
 $square.one("click", function (){ //I only want the square clickable once.
@@ -134,7 +148,8 @@ $square.one("click", function (){ //I only want the square clickable once.
       $(".square.three").hasClass("playerOne") && $(".square.five").hasClass("playerOne") && $(".square.seven").hasClass("playerOne") ||
 
       $(".square.one").hasClass("playerOne") && $(".square.five").hasClass("playerOne") && $(".square.nine").hasClass("playerOne")) {
-
+    playerOneWins += 1; //add one to the win counter
+    console.log(playerOneWins);
     clintonWin(); //run clinton win theme
 
   } else if (
@@ -154,8 +169,10 @@ $square.one("click", function (){ //I only want the square clickable once.
     $(".square.three").hasClass("playerTwo") && $(".square.five").hasClass("playerTwo") && $(".square.seven").hasClass("playerTwo") ||
 
     $(".square.one").hasClass("playerTwo") && $(".square.five").hasClass("playerTwo") && $(".square.nine").hasClass("playerTwo")) {
-
+    playerTwoWins += 1; //add one to the win counter
+    console.log("playerTwoWins");
     cheetoWin(); //run cheeto win theme
+
 
   } else if (numberOfTurns === 9){
     tie(); //run tie theme
@@ -180,6 +197,7 @@ $square.one("click", function (){ //I only want the square clickable once.
 // changes the p in col one and two to show, with a slight delay
 var animatePlayerOne = function () {
   window.setTimeout(function(){
+    $(".col-one p").addClass("animated bounce");
     $(".col-one p").css({
       display: "inline-block"
     });
@@ -188,6 +206,7 @@ var animatePlayerOne = function () {
 
 var animatePlayerTwo = function () {
   window.setTimeout(function(){
+    $(".col-two p").addClass("animated bounce");
     $(".col-two p").css({
       display: "inline-block"
     });
