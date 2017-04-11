@@ -73,10 +73,6 @@ $(document).ready(function () {
 
 //Animate the start button, with a hover type animation
 
-//click on any square to show an image not hard coded, set a variable
-//to make a condition that will log the image as either trump or clinton
-  //If player one has click event on square, then show clinton jpg
-    //If player two has click event on square, then show trump jpg
 
 
 
@@ -87,14 +83,8 @@ $(document).ready(function () {
 // Once player 1 finishes variable changes to 2, once player 2 finishes, variable goes back to 1
 //variable to keep track of number of turns so that if it reaches 9 and none of the winning combos have happened, then it should be a tie.
 
-//I need a function to keep track of scoring, first to reach 3 wins.
-  //If playerOne or two === 3 wins - then play win theme
-  //When each game completes I need:
-    //1 to be added to the scoreboard of the winner
 
-      //The squares to reset to star background
-      //PlayerOne and PlayerTwo classes to be removed
-      //numberOfTurns to reset to 0
+
   // I need a counter on each players column to display their score
     //I need the number pushed to that scoreboard as a string using .text
 
@@ -102,9 +92,13 @@ var player = 1;
 var numberOfTurns = 0;
 var playerOneWins = 0;
 var playerTwoWins = 0;
+//check to see if player one or player two reaches 3 wins
+if (playerOneWins === 2) {
+  console.log("clinton wins");
+}
 
-$square = $(".square");
-$square.one("click", function (){ //I only want the square clickable once.
+var $square = $(".square");
+$square.on("click", function (){ //I only want the square clickable once.
   if (player === 1) {
       removePlayerTwoText();
       $(this).addClass("animated flipInX");
@@ -149,7 +143,7 @@ $square.one("click", function (){ //I only want the square clickable once.
 
       $(".square.one").hasClass("playerOne") && $(".square.five").hasClass("playerOne") && $(".square.nine").hasClass("playerOne")) {
     playerOneWins += 1; //add one to the win counter
-    $(".scoreOne").text(playerOneWins);
+    $(".scoreOne").text(playerOneWins); //push the number of wins to the players score panel
     clintonWin(); //run clinton win theme
 
   } else if (
@@ -170,12 +164,11 @@ $square.one("click", function (){ //I only want the square clickable once.
 
     $(".square.one").hasClass("playerTwo") && $(".square.five").hasClass("playerTwo") && $(".square.nine").hasClass("playerTwo")) {
     playerTwoWins += 1; //add one to the win counter
-    console.log("playerTwoWins");
+    $(".scoreTwo").text(playerTwoWins); //push the number of ones to the players score panel
     cheetoWin(); //run cheeto win theme
 
-
   } else if (numberOfTurns === 9){
-    tie(); //run tie theme
+      tie(); //run tie theme
 
   } else {
       if (player ===2){
@@ -187,11 +180,6 @@ $square.one("click", function (){ //I only want the square clickable once.
 });
 
 ///////////THEMES AND ANIMATIONS/////////////////////
-
-//animate player when it's their turn, add text saying player one turn
-
-//animate, h2 + img + p in col-one & col-two, with a delay
-
 
 //animations to show who's turn is it next
 // changes the p in col one and two to show, with a slight delay
@@ -225,13 +213,8 @@ var animatePlayerTwo = function () {
      display: "none"
    });
  };
-
-
-
 // I want to animate the gameboard exploding and each square
 // to fly out to the sides and up on a win
-
-
 var animateBoard = function () {
   $(".gameboard").css ({
     border: "none"
@@ -264,51 +247,122 @@ var animateBoard = function () {
     left: "-1500px"
   }, 3500);
 };
-
+//I need my gameboard to be centre of screen
 boardCentre = ((window.innerWidth / 2) - 302 ) + "px";
 $gameboard = $(".gameboard");
 $gameboard.css({
   left: boardCentre
 });
-
-// Clinton winning theme
 themeCentre = ((window.innerWidth / 2) - 300 ) + "px";
 
+//Winning themes
+
+// Clinton winning theme
+var $clintonTheme = $(".clintonTheme");
+var $clintonButton = $(".clintonTheme button");
 var clintonWin = function () {
-  animateBoard();
-    var $clintonTheme = $(".clintonTheme");
+  animateBoard(); //run exploding squares
   $clintonTheme.css({
     display: "inline-block",
     left: themeCentre
   });
 };
-// Cheeto winning theme
+//set button to reset panels, and clear classes
+$clintonButton.on("click", function (){
+  $clintonTheme.css({
+    display: "none"
+  });
+  playAgain();
+});
 
+// Cheeto winning theme
+var $cheetoButton = $(".cheetoTheme button");
+var $cheetoTheme = $(".cheetoTheme");
 var cheetoWin = function () {
-  animateBoard();
-    var $cheetoTheme = $(".cheetoTheme");
+  animateBoard(); //run exploding squares
   $cheetoTheme.css({
     display: "inline-block",
     left: themeCentre
   });
 };
 
+//reset button for cheeto theme
+$cheetoButton.on("click", function (){
+  $cheetoTheme.css({
+    display: "none"
+  });
+  playAgain();
+});
+
 //It's a tie theme
+var $tieTheme = $(".tieTheme");
+var $tieButton = $(".tieTheme button");
 var tie = function () {
-  animateBoard();
-    var $tieTheme = $(".tieTheme");
+  animateBoard(); //run exploding squares
   $tieTheme.css({
     display: "inline-block",
     left: themeCentre
   });
 };
 
+//reset button for tie theme
+$tieButton.on("click", function (){
+  $tieTheme.css({
+    display: "none"
+  });
+  playAgain();
+});
 
+//I need a function to keep track of scoring, first to reach 3 wins.
+  //If playerOne or two === 3 wins - then play win theme
+  //When each game completes I need:
+    //1 to be added to the scoreboard of the winner - done
 
+      //The squares to reset to star background - done
+      //PlayerOne and PlayerTwo classes & animated flipInX to be removed - done
+      //numberOfTurns to reset to 0 - done
 
-
-
-
+var playAgain = function () {
+  numberOfTurns = 0;
+  player = 1;
+  $(".square").removeClass("playerOne");
+  $(".square").removeClass("playerTwo");
+  $(".square").removeClass("animated");
+  $(".square").removeClass("flipInX");
+  $(".gameboard").css ({
+    display: "inline-block"
+  });
+  $(".square").css ({
+    backgroundImage: "url(images/square_stars.png)"
+  });
+  $(".square.one").animate({
+    right: "0px"
+  }, 500);
+  $(".square.two").animate({
+    top: "0px"
+  }, 500);
+  $(".square.three").animate({
+    left: "0px"
+  }, 500);
+  $(".square.four").animate({
+    right: "0px"
+  }, 500);
+  $(".square.five").animate({
+    top: "0px"
+  }, 500);
+  $(".square.six").animate({
+    left: "0px"
+  }, 500);
+  $(".square.seven").animate({
+    right: "0px"
+  }, 500);
+  $(".square.eight").animate({
+    bottom: "0px"
+  }, 500);
+  $(".square.nine").animate({
+    left: "0px"
+  }, 500);
+};
 
 
 

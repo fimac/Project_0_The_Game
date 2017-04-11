@@ -113,6 +113,7 @@ header h1 {
   position: relative;
   float: right;
   background-image: url("../images/square_stars.png");
+  background-size: 100%;
 }
 
 .cheetoTheme {
@@ -139,5 +140,36 @@ header h1 {
   color: white;
   position: absolute;
   top: 300px;
+  font-family: 'Press Start 2P', cursive;
+}
+
+.cheetoTheme button {
+  border: none;
+  background: #000080;
+  color: white;
+  font-size: 20px;
+  padding: 20px;
+  border-radius: 5%;
+  font-family:'Press Start 2P', cursive;
+  display: inline-block;
+}
+
+.clintonTheme button {
+  border: none;
+  background: #000080;
+  color: white;
+  font-size: 20px;
+  padding: 20px;
+  border-radius: 5%;
+  font-family: 'Press Start 2P', cursive;
+}
+
+.tieTheme button {
+  border: none;
+  background: #000080;
+  color: white;
+  font-size: 20px;
+  padding: 20px;
+  border-radius: 5%;
   font-family: 'Press Start 2P', cursive;
 }
