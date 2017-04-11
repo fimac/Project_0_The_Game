@@ -82,7 +82,15 @@ $(document).ready(function () {
 //Declare undefined variable
 // Once player 1 finishes variable changes to 2, once player 2 finishes, variable goes back to 1
 //variable to keep track of number of turns so that if it reaches 9 and none of the winning combos have happened, then it should be a tie.
-
+var $one = $(".square.one");
+var $two = $(".square.two");
+var $three = $(".square.three");
+var $four = $(".square.four");
+var $five = $(".square.five");
+var $six = $(".square.six");
+var $seven = $(".square.seven");
+var $eight = $(".square.eight");
+var $nine = $(".square.nine");
 
 
   // I need a counter on each players column to display their score
@@ -93,9 +101,7 @@ var numberOfTurns = 0;
 var playerOneWins = 0;
 var playerTwoWins = 0;
 //check to see if player one or player two reaches 3 wins
-if (playerOneWins === 2) {
-  console.log("clinton wins");
-}
+
 
 var $square = $(".square");
 $square.on("click", function (){ //I only want the square clickable once.
@@ -127,51 +133,42 @@ $square.on("click", function (){ //I only want the square clickable once.
   }
 
   if ( //horizontal
-      ($(".square.one").hasClass("playerOne") && $(".square.two").hasClass("playerOne") &&                             $(".square.three").hasClass("playerOne")) ||
+    ($one.hasClass("playerOne") && ($two.hasClass("playerOne") && $three.hasClass("playerOne")) ||
+    ($four.hasClass("playerOne") && $seven.hasClass("playerOne")) ||
+    ($five.hasClass("playerOne") && $nine.hasClass("playerOne"))) ||
 
-      $(".square.four").hasClass("playerOne") && $(".square.five").hasClass("playerOne") && $(".square.six").hasClass("playerOne") ||
+    ($five.hasClass("playerOne") && ($six.hasClass("playerOne") && $four.hasClass("playerOne")) ||
+    ($two.hasClass("playerOne") && $eight.hasClass("playerOne")) ||
+    ($seven.hasClass("playerOne") && $three.hasClass("playerOne"))) ||
 
-      $(".square.seven").hasClass("playerOne") && $(".square.eight").hasClass("playerOne") && $(".square.nine").hasClass("playerOne") ||
-        //vertical
-      $(".square.one").hasClass("playerOne") && $(".square.four").hasClass("playerOne") && $(".square.seven").hasClass("playerOne") ||
+    $three.hasClass("playerOne") && $six.hasClass("playerOne") && $nine.hasClass("playerOne") ||
+    $seven.hasClass("playerOne") && $eight.hasClass("playerOne") && $nine.hasClass("playerOne"))
+    {
+      playerOneWins += 1; //add one to the win counter
+      $(".scoreOne").text(playerOneWins); //push the number of wins to the players score panel
+      clintonWin(); //run clinton win theme
 
-      $(".square.two").hasClass("playerOne") && $(".square.five").hasClass("playerOne") && $(".square.eight").hasClass("playerOne") ||
+} else if (
+    ($one.hasClass("playerTwo") && ($two.hasClass("playerTwo") && $three.hasClass("playerTwo")) ||
+    ($four.hasClass("playerTwo") && $seven.hasClass("playerTwo")) ||
+    ($five.hasClass("playerTwo") && $nine.hasClass("playerTwo"))) ||
 
-      $(".square.three").hasClass("playerOne") && $(".square.six").hasClass("playerOne") && $(".square.nine").hasClass("playerOne") ||
-        //diagonal
-      $(".square.three").hasClass("playerOne") && $(".square.five").hasClass("playerOne") && $(".square.seven").hasClass("playerOne") ||
+    ($five.hasClass("playerTwo") && ($six.hasClass("playerTwo") && $four.hasClass("playerTwo")) ||
+    ($two.hasClass("playerTwo") && $eight.hasClass("playerTwo")) ||
+    ($seven.hasClass("playerTwo") && $three.hasClass("playerTwo"))) ||
 
-      $(".square.one").hasClass("playerOne") && $(".square.five").hasClass("playerOne") && $(".square.nine").hasClass("playerOne")) {
-    playerOneWins += 1; //add one to the win counter
-    $(".scoreOne").text(playerOneWins); //push the number of wins to the players score panel
-    clintonWin(); //run clinton win theme
-
-  } else if (
-      //horizontal
-    $(".square.one").hasClass("playerTwo") && $(".square.two").hasClass("playerTwo") &&                             $(".square.three").hasClass("playerTwo") ||
-
-    $(".square.four").hasClass("playerTwo") && $(".square.five").hasClass("playerTwo") && $(".square.six").hasClass("playerTwo") ||
-
-    $(".square.seven").hasClass("playerTwo") && $(".square.eight").hasClass("playerTwo") && $(".square.nine").hasClass("playerTwo") ||
-    //vertical
-    $(".square.one").hasClass("playerTwo") && $(".square.four").hasClass("playerTwo") && $(".square.seven").hasClass("playerTwo") ||
-
-    $(".square.two").hasClass("playerTwo") && $(".square.five").hasClass("playerTwo") && $(".square.eight").hasClass("playerTwo") ||
-
-    $(".square.three").hasClass("playerTwo") && $(".square.six").hasClass("playerTwo") && $(".square.nine").hasClass("playerTwo") ||
-    //diagonal
-    $(".square.three").hasClass("playerTwo") && $(".square.five").hasClass("playerTwo") && $(".square.seven").hasClass("playerTwo") ||
-
-    $(".square.one").hasClass("playerTwo") && $(".square.five").hasClass("playerTwo") && $(".square.nine").hasClass("playerTwo")) {
-    playerTwoWins += 1; //add one to the win counter
-    $(".scoreTwo").text(playerTwoWins); //push the number of ones to the players score panel
-    cheetoWin(); //run cheeto win theme
+    $three.hasClass("playerTwo") && $six.hasClass("playerTwo") && $nine.hasClass("playerTwo") ||
+    $seven.hasClass("playerTwo") && $eight.hasClass("playerTwo") && $nine.hasClass("playerTwo"))
+    {
+     playerTwoWins += 1; //add one to the win counter
+     $(".scoreTwo").text(playerTwoWins); //push the number of ones to the players score panel
+     cheetoWin(); //run cheeto win theme
 
   } else if (numberOfTurns === 9){
       tie(); //run tie theme
 
   } else {
-      if (player ===2){
+      if (player === 2){
         animatePlayerTwo();
       } else {
         animatePlayerOne();
@@ -189,7 +186,7 @@ var animatePlayerOne = function () {
     $(".col-one p").css({
       display: "inline-block"
     });
-  }, 1000);
+  }, 500);
 };
 
 var animatePlayerTwo = function () {
@@ -198,7 +195,7 @@ var animatePlayerTwo = function () {
     $(".col-two p").css({
       display: "inline-block"
     });
-  }, 1000);
+  }, 500);
 };
 
 //function to remove the text so it toggles back and forth between the two
@@ -270,7 +267,7 @@ var clintonWin = function () {
 //set button to reset panels, and clear classes
 $clintonButton.on("click", function (){
   $clintonTheme.css({
-    display: "none"
+    display: "none",
   });
   playAgain();
 });
@@ -289,7 +286,7 @@ var cheetoWin = function () {
 //reset button for cheeto theme
 $cheetoButton.on("click", function (){
   $cheetoTheme.css({
-    display: "none"
+    display: "none",
   });
   playAgain();
 });
@@ -308,7 +305,7 @@ var tie = function () {
 //reset button for tie theme
 $tieButton.on("click", function (){
   $tieTheme.css({
-    display: "none"
+    display: "none",
   });
   playAgain();
 });
