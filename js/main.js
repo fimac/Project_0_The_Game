@@ -79,6 +79,9 @@ $(document).ready(function () {
     //If player two has click event on square, then show trump jpg
 
 
+
+
+
 //Below function will switch between player 1 & 2
 //Declare undefined variable
 // Once player 1 finishes variable changes to 2, once player 2 finishes, variable goes back to 1
@@ -89,7 +92,7 @@ var numberOfTurns = 0;
 $square = $(".square");
 $square.one("click", function (){ //I only want the square clickable once.
   if (player === 1) {
-
+      removePlayerTwoText();
       $(this).addClass("animated flipInX");
       $(this).css({ //When clicked set square css to image clinton
       backgroundImage : "url(images/clintonTwo.jpg)",
@@ -99,9 +102,10 @@ $square.one("click", function (){ //I only want the square clickable once.
       $(this).addClass("playerOne"); //add a class marker, so I can check what squares playerOne has
       numberOfTurns += 1; //add 1 to the number of turns
       player = 2; //update variable to 2, so to switch to player 2
-      animatePlayerTwo();
+      // animatePlayerTwo();
 
   } else {
+      removePlayerOneText();
       $(this).addClass("animated flipInX");
       $(this).css({ //when clicked set square css to trump cheeto
       backgroundImage : "url(images/trump.jpg)",
@@ -111,7 +115,7 @@ $square.one("click", function (){ //I only want the square clickable once.
       $(this).addClass("playerTwo"); //add a class marker, so I can check what squares playerTwo has
       numberOfTurns += 1; //add 1 to the number of turns
       player = 1;
-      animatePlayerOne();
+      // animatePlayerOne();
   }
 
   if ( //horizontal
@@ -157,7 +161,11 @@ $square.one("click", function (){ //I only want the square clickable once.
     tie(); //run tie theme
 
   } else {
-    console.log("it's player " + player + "'s turn");
+      if (player ===2){
+        animatePlayerTwo();
+      } else {
+        animatePlayerOne();
+      }
   }
 });
 
@@ -167,18 +175,37 @@ $square.one("click", function (){ //I only want the square clickable once.
 
 //animate, h2 + img + p in col-one & col-two, with a delay
 
-//test animate h2
-//window.setTimeout(function () {
-//console.log("This was called after 3000 ms");
-// }, 3000);
 
+//animations to show who's turn is it next
+// changes the p in col one and two to show, with a slight delay
 var animatePlayerOne = function () {
-  console.log("animated player one");
+  window.setTimeout(function(){
+    $(".col-one p").css({
+      display: "inline-block"
+    });
+  }, 1000);
 };
 
 var animatePlayerTwo = function () {
-  console.log("animated player two");
+  window.setTimeout(function(){
+    $(".col-two p").css({
+      display: "inline-block"
+    });
+  }, 1000);
 };
+
+//function to remove the text so it toggles back and forth between the two
+ var removePlayerOneText = function () {
+   $(".col-two p").css({
+     display: "none"
+   });
+ };
+
+ var removePlayerTwoText = function () {
+   $(".col-one p").css({
+     display: "none"
+   });
+ };
 
 
 

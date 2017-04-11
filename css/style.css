@@ -55,6 +55,11 @@ header h1 {
   border-radius: 100%;
 }
 
+.col-one p {
+  margin-top: 100px;
+  display: none;
+}
+
 .col-two {
   border: 2px solid red;
   display: inline-block;
@@ -71,6 +76,11 @@ header h1 {
 .col-two img {
   width: 200px;
   border-radius: 100%;
+}
+
+.col-two p {
+  margin-top: 100px;
+  display: none;
 }
 
 .gameboard {
