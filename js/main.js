@@ -326,14 +326,11 @@ $tieButton.on("click", function (){
   playAgain();
 });
 
-//I need a function to keep track of scoring, first to reach 3 wins.
-  //If playerOne or two === 3 wins - then play win theme
-  //When each game completes I need:
-    //1 to be added to the scoreboard of the winner - done
-
-      //The squares to reset to star background - done
-      //PlayerOne and PlayerTwo classes & animated flipInX to be removed - done
-      //numberOfTurns to reset to 0 - done
+//Function to reset gameboard but no wipe scores
+//The squares to reset to star background - done
+//reverse animate squares into place
+//PlayerOne and PlayerTwo classes & animated flipInX to be removed - done
+//numberOfTurns to reset to 0 - done
 
 var playAgain = function () {
   numberOfTurns = 0;
