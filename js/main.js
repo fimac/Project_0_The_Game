@@ -104,6 +104,7 @@ var playerTwoWins = 0;
 
 
 var $square = $(".square");
+
 $square.on("click", function (){ //I only want the square clickable once.
   if (player === 1) {
       removePlayerTwoText();
@@ -186,6 +187,13 @@ $square.on("click", function (){ //I only want the square clickable once.
 });
 
 ///////////THEMES AND ANIMATIONS/////////////////////
+// Quit button will refresh whole page
+var $quitButton = $(".col-one button, .col-two button");
+
+$quitButton.one("click", function (){
+  window.location.reload();
+});
+
 
 //animations to show who's turn is it next
 // changes the p in col one and two to show, with a slight delay
