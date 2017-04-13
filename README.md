@@ -29,7 +29,7 @@ Before creating anything, I worked out a plan on paper. Although as I worked
 on the game, things changed. Initially I wanted to drag tokens over to
 the gameboard, to put into place. I was making it more complex than it needed
 to be. I had a really ordinary background of a white house. Once I started
-typing pseudocode, it made it clear how complicated tic tac toe is to code. 
+typing pseudocode, it made it clear how complicated tic tac toe is to code.
 
 I started off with what Data was involved.
   - I needed a token/marker for each player (2)

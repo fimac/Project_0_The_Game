@@ -15,7 +15,7 @@ var playerTwoWins = 0; //variable to keep track of playerTwo wins
 
 var $square = $(".square"); // variable to store jQuery selection of .square class
 
-$square.one("click", function (){
+$square.on("click", function (){
   if (player === 1) {
       removePlayerTwoText();
       $(this).addClass("animated flipInX");
@@ -101,7 +101,7 @@ var $quitButton = $(".col-one button, .col-two button");
 $quitButton.one("click", function (){
   window.location.reload();
 });
-//animation to increase size slightly if button is clicked
+//animation to increase size slightly if hovering over
 $(".col-one button").mouseenter(function(){
     $(".col-one button").animate({
       padding: "23px"
@@ -341,7 +341,15 @@ var playAgain = function () {
   }, 500);
 };
 
-
+// var testObject = { 'one': 1, 'two': 2, 'three': 3 };
+//
+// // Put the object into storage
+// localStorage.setItem('testObject', JSON.stringify(testObject));
+//
+// // Retrieve the object from storage
+// var retrievedObject = localStorage.getItem('testObject');
+//
+// console.log('retrievedObject: ', JSON.parse(retrievedObject));
 
 
 ///////////below to end $(document).ready thing from 1st line
