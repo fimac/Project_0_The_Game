@@ -154,6 +154,7 @@ header h1 {
   display: inline-block;
   position: absolute;
   left: 180px;
+  outline: none;
 }
 
 .col-one button, .col-two button {
@@ -168,4 +169,5 @@ header h1 {
   font-size: 15px;
   padding: 20px;
   border-radius: 5%;
+  outline: none;
 }

@@ -1,111 +1,21 @@
 $(document).ready(function () {
 // console.log("js is working");
 
-// Technical Requirements
-//
-// Your app must:
-//
-// Render a game board in the browser
-// Switch turns between X and O (or whichever markers you select)
-// Visually display which side won if a player gets three in a row or show a draw/"cat’s game" if neither wins
-// Include separate HTML / CSS / JavaScript files
-// Stick with KISS (Keep It Simple Stupid) and DRY (Don't Repeat Yourself) principles
-// Use Javascript for DOM manipulation
-// Deploy your game online, where the rest of the world can access it
-// Use semantic markup for HTML and CSS (adhere to best practices)
-
-/////////////////CLINTON VS TRUMP///////////////////////
-//Data
-// Track placement of tokens.
-  //How do I know if 3 of the same token are matched in the same line?
-    // Total of 8 configs, 3 horizontal, 3 vertical, 2 diagonal
-    // Vertical Combo wins
-    // 1, 7 & 4 || ||
-    // 2, 5 & 8
-    // 3, 6 & 9 ||
-
-    //Horizontal Combo wins
-    //1, 2 & 3
-    // 4, 5 & 6
-    // 7, 8 & 9
-    //Diagonal wins
-    //1, 5 & 9, 3, 5 & 7
-
-  //How do I know if it's a draw, if all squares are full and none of the
-  //win combos have activated
-  //combo draw test
-    // 3, 2, 4, 7, 9
-    // 1, 5, 6, 8
-
-    //There would need to be a condition that would check each time if any of these matched
-    //If it does, then win theme
-// If a token flipped on a square, it can only happen once, it can't be flipped again (i could use that click once jquery thing)
-  // Switch from player one to player two (?? I need to work this out)
-    //
-
-//Presentation
-
-//I need a large square to represent the game board
-// Then 9 squares that will sit inside
-// Heading
-// holding theme, until start button is pushed
-// Start button
-// Tokens/players
-//When matched, a win theme (music, background change)
-  // Name of player + WINS! (a button to replay)
-
-//Style
-// Heading = american colors (blue, white, red)
-// Background = white house
-// Gameboard = white stars on blue background
-  //separated by red lines
-//Tokens, trump and clinton faces
-//Start button
-
-//DOM manipulation
-
-//When a square is clicked, it flips to show either trump or clinton depending on who clicks it
-  //I need to be able to set this up so it knows wether it is player one or player two clicking
-    //This then need to keep a register of where that has been clicked
-      //And if there are 3 in a row, then trigger the win theme for that player
-//When 3 in a row match, then theme change indicating there's a win, music playing, background change
-
-
-//Animate the start button, with a hover type animation
-
-
-
-
-
 
 //Below function will switch between player 1 & 2
 //Declare undefined variable
 // Once player 1 finishes variable changes to 2, once player 2 finishes, variable goes back to 1
 //variable to keep track of number of turns so that if it reaches 9 and none of the winning combos have happened, then it should be a tie.
-var $one = $(".square.one");
-var $two = $(".square.two");
-var $three = $(".square.three");
-var $four = $(".square.four");
-var $five = $(".square.five");
-var $six = $(".square.six");
-var $seven = $(".square.seven");
-var $eight = $(".square.eight");
-var $nine = $(".square.nine");
+
+var player = 1; // Player one starts, this variable will be updated to 1 or 2 depending on player doing the click event
+var numberOfTurns = 0; //variable to keep track of number of turns, if === 9 with no matches then it's a tie
+var playerOneWins = 0; //variable to keep track of playerOne wins
+var playerTwoWins = 0; //variable to keep track of playerTwo wins
 
 
-  // I need a counter on each players column to display their score
-    //I need the number pushed to that scoreboard as a string using .text
+var $square = $(".square"); // variable to store jQuery selection of .square class
 
-var player = 1;
-var numberOfTurns = 0;
-var playerOneWins = 0;
-var playerTwoWins = 0;
-//check to see if player one or player two reaches 3 wins
-
-
-var $square = $(".square");
-
-$square.on("click", function (){ //I only want the square clickable once.
+$square.one("click", function (){
   if (player === 1) {
       removePlayerTwoText();
       $(this).addClass("animated flipInX");
@@ -117,7 +27,6 @@ $square.on("click", function (){ //I only want the square clickable once.
       $(this).addClass("playerOne"); //add a class marker, so I can check what squares playerOne has
       numberOfTurns += 1; //add 1 to the number of turns
       player = 2; //update variable to 2, so to switch to player 2
-      // animatePlayerTwo();
 
   } else {
       removePlayerOneText();
@@ -130,9 +39,8 @@ $square.on("click", function (){ //I only want the square clickable once.
       $(this).addClass("playerTwo"); //add a class marker, so I can check what squares playerTwo has
       numberOfTurns += 1; //add 1 to the number of turns
       player = 1;
-      // animatePlayerOne();
   }
-
+// conditions to check if it's a match
   if ( //horizontal
       ($(".square.one").hasClass("playerOne") && $(".square.two").hasClass("playerOne") && $(".square.three").hasClass("playerOne")) ||
 
@@ -193,10 +101,32 @@ var $quitButton = $(".col-one button, .col-two button");
 $quitButton.one("click", function (){
   window.location.reload();
 });
+//animation to increase size slightly if button is clicked
+$(".col-one button").mouseenter(function(){
+    $(".col-one button").animate({
+      padding: "23px"
+    }, "fast");
+    });
+$(".col-one button").mouseleave(function(){
+    $(".col-one button").animate({
+      padding: "20px"
+    }, "fast");
+    });
+
+$(".col-two button").mouseenter(function(){
+    $(".col-two button").animate({
+      padding: "23px"
+    }, "fast");
+    });
+$(".col-two button").mouseleave(function(){
+    $(".col-two button").animate({
+      padding: "20px"
+    }, "fast");
+    });
 
 
 //animations to show who's turn is it next
-// changes the p in col one and two to show, with a slight delay
+// changes the p in col one and two to show, with a slight delay and bounce
 var animatePlayerOne = function () {
   window.setTimeout(function(){
     $(".col-one p").addClass("animated bounce");
@@ -215,7 +145,7 @@ var animatePlayerTwo = function () {
   }, 500);
 };
 
-//function to remove the prompt to play text so it toggles back and forth between the two
+//function to remove the prompt to who's turn is next text so it toggles back and forth between the two
  var removePlayerOneText = function () {
    $(".col-two p").css({
      display: "none"
@@ -285,9 +215,22 @@ var clintonWin = function () {
 $clintonButton.on("click", function (){
   $clintonTheme.css({
     display: "none",
+    outline: "none"
   });
   playAgain();
 });
+
+$clintonButton.mouseenter(function(){
+    $clintonButton.animate({
+      padding: "23px"
+    }, "fast");
+    });
+$clintonButton.mouseleave(function(){
+    $clintonButton.animate({
+      padding: "20px"
+    }, "fast");
+    });
+
 
 // Cheeto winning theme
 var $cheetoButton = $(".cheetoTheme button");
@@ -304,9 +247,21 @@ var cheetoWin = function () {
 $cheetoButton.on("click", function (){
   $cheetoTheme.css({
     display: "none",
+    outline: "none"
   });
   playAgain();
 });
+
+$cheetoButton.mouseenter(function(){
+    $cheetoButton.animate({
+      padding: "23px"
+    }, "fast");
+    });
+$cheetoButton.mouseleave(function(){
+    $cheetoButton.animate({
+      padding: "20px"
+    }, "fast");
+    });
 
 //It's a tie theme
 var $tieTheme = $(".tieTheme");
@@ -322,9 +277,21 @@ var tie = function () {
 $tieButton.on("click", function (){
   $tieTheme.css({
     display: "none",
+    outline: "none"
   });
   playAgain();
 });
+
+$tieButton.mouseenter(function(){
+    $tieButton.animate({
+      padding: "23px"
+    }, "fast");
+    });
+$tieButton.mouseleave(function(){
+    $tieButton.animate({
+      padding: "20px"
+    }, "fast");
+    });
 
 //Function to reset gameboard but no wipe scores
 //The squares to reset to star background - done
