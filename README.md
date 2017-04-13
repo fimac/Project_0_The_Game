@@ -25,11 +25,11 @@ Once game is completed
   - If you want to finish the session, click I Quit.
 
 Approach taken:-
-Before creating anything, I worked out a plan on paper. As I worked
-on the game, things evolved. Initially I wanted to drag tokens over to
+Before creating anything, I worked out a plan on paper. Although as I worked
+on the game, things changed. Initially I wanted to drag tokens over to
 the gameboard, to put into place. I was making it more complex than it needed
-to be. I had a really crappy background of a white house. My player board was
-ordinary. My logic on paper, was a lot harder to translate into code.
+to be. I had a really ordinary background of a white house. Once I started
+typing pseudocode, it made it clear how complicated tic tac toe is to code. 
 
 I started off with what Data was involved.
   - I needed a token/marker for each player (2)
@@ -84,4 +84,3 @@ Third stage
   - So the score count did not refresh, I created a continue button to the winning/tie themes and used jQuery to create a
     function that would reset the css (bring squares back in from explosion), Reset the turn counter, and player to 1, remove all classes, including the flipInX classes that were added. I realised after testing that even though the css had reset, the flipInX function didn't work again. If I removed it then when it got added back again on the click function it worked.
   - The issue I found though, was I couldn't reset the .one click function. So none of the squares would click again after the refresh. I changed the .one to .on, but this would mean that during the game, a player could click twice on the same square. I tried to fix this with the jQUery .load() function. Using the jQuery selector to select the class of the button, and then reload index.html. But I got an error saying that the reload file is not the right protocol. It needed to be http:// not file/////. I googled and found an article about using python to make the folder a local server, and then using the url  http://localhost:8000/ then the file path. I still received the cross origin error.
-  - 
